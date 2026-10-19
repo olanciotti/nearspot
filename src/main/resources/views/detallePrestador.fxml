@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.nearspot.controller.DetallePrestadorController"
+        fitToWidth="true"
+        style="-fx-background-color: #f5f5f5;">
+
+    <VBox
+            spacing="20"
+            style="-fx-padding: 30;"
+            maxWidth="750">
+
+        <Button
+                text="← Volver"
+                onAction="#volver"/>
+
+        <!-- CARD PRINCIPAL -->
+        <VBox
+                spacing="10"
+                style="
+                    -fx-background-color: white;
+                    -fx-background-radius: 15;
+                    -fx-border-radius: 15;
+                    -fx-border-color: #dddddd;
+                    -fx-padding: 25;
+                ">
+
+            <HBox spacing="10">
+
+                <Label
+                        fx:id="lblNombre"
+                        style="
+                            -fx-font-size: 26px;
+                            -fx-font-weight: bold;
+                        "/>
+
+                <Label
+                        fx:id="lblVerificado"
+                        style="
+                            -fx-text-fill: green;
+                            -fx-font-weight: bold;
+                        "/>
+
+            </HBox>
+
+            <Label
+                    fx:id="lblTipo"
+                    style="-fx-font-size: 14px;"/>
+
+            <Label
+                    fx:id="lblRubro"
+                    style="
+                        -fx-font-size: 16px;
+                        -fx-font-weight: bold;
+                    "/>
+
+            <Separator/>
+
+            <Label
+                    text="Descripción"
+                    style="-fx-font-weight: bold;"/>
+
+            <Label
+                    fx:id="lblDescripcion"
+                    wrapText="true"/>
+
+        </VBox>
+
+
+        <!-- CONTACTO -->
+        <VBox
+                spacing="8"
+                style="
+                    -fx-background-color: white;
+                    -fx-background-radius: 15;
+                    -fx-border-radius: 15;
+                    -fx-border-color: #dddddd;
+                    -fx-padding: 20;
+                ">
+
+            <Label
+                    text="Información de contacto"
+                    style="
+                        -fx-font-size: 18px;
+                        -fx-font-weight: bold;
+                    "/>
+
+            <Label fx:id="lblTelefono"/>
+            <Label fx:id="lblEmail"/>
+            <Label fx:id="lblSitioWeb"/>
+            <Label fx:id="lblInstagram"/>
+
+        </VBox>
+
+
+        <!-- UBICACIÓN -->
+        <VBox
+                spacing="8"
+                style="
+                    -fx-background-color: white;
+                    -fx-background-radius: 15;
+                    -fx-border-radius: 15;
+                    -fx-border-color: #dddddd;
+                    -fx-padding: 20;
+                ">
+
+            <Label
+                    text="Ubicación"
+                    style="
+                        -fx-font-size: 18px;
+                        -fx-font-weight: bold;
+                    "/>
+
+            <Label fx:id="lblDireccion"/>
+            <Label fx:id="lblLocalidad"/>
+            <Label fx:id="lblProvincia"/>
+            <Label fx:id="lblZona"/>
+
+        </VBox>
+
+
+        <!-- INFORMACIÓN ADICIONAL -->
+        <VBox
+                spacing="8"
+                style="
+                    -fx-background-color: white;
+                    -fx-background-radius: 15;
+                    -fx-border-radius: 15;
+                    -fx-border-color: #dddddd;
+                    -fx-padding: 20;
+                ">
+
+            <Label
+                    text="Información adicional"
+                    style="
+                        -fx-font-size: 18px;
+                        -fx-font-weight: bold;
+                    "/>
+
+            <Label fx:id="lblHorario"/>
+            <Label fx:id="lblEstado"/>
+
+            <Label
+                    fx:id="lblDatosEspecificos"
+                    wrapText="true"/>
+
+        </VBox>
+
+        <!-- RESEÑAS Y CALIFICACIONES -->
+
+<VBox
+        spacing="12"
+        style="
+            -fx-background-color: white;
+            -fx-background-radius: 15;
+            -fx-border-radius: 15;
+            -fx-border-color: #dddddd;
+            -fx-padding: 20;
+        ">
+
+    <Label
+            text="Calificaciones y reseñas"
+            style="
+                -fx-font-size: 18px;
+                -fx-font-weight: bold;
+            "/>
+
+    <HBox spacing="10">
+
+            <Label
+            fx:id="lblEstrellasPromedio"
+            style="
+                -fx-font-size: 24px;
+                -fx-text-fill: #D4AF37;
+                -fx-font-weight: bold;
+            " />
+
+        <Label
+            fx:id="lblPromedio"
+            style="
+                -fx-font-size: 18px;
+                -fx-font-weight: bold;
+                -fx-text-fill: #333333;
+            " />
+
+    </HBox>
+
+    <Label
+            fx:id="lblCantidadCalificaciones"/>
+
+    <Separator/>
+
+    <VBox
+            fx:id="contenedorResenas"
+            spacing="10"/>
+
+    </VBox>
+
+    </VBox>
+
+</ScrollPane>

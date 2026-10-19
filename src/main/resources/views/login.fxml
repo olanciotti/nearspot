@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.nearspot.controller.LoginController"
+        alignment="CENTER"
+        spacing="15"
+        style="-fx-padding: 40;">
+
+    <Label
+            text="NearSpot"
+            style="-fx-font-size: 32px; -fx-font-weight: bold;" />
+
+    <Label
+            text="Iniciar sesión"
+            style="-fx-font-size: 20px;" />
+
+    <TextField
+            fx:id="txtEmail"
+            promptText="Email"
+            maxWidth="300" />
+
+    <PasswordField
+            fx:id="txtPassword"
+            promptText="Contraseña"
+            maxWidth="300"
+            onAction="#iniciarSesion" />
+
+    <Button
+            text="Ingresar"
+            onAction="#iniciarSesion"
+            prefWidth="150" />
+
+    <Label
+            fx:id="lblError"
+            text=""
+            style="-fx-text-fill: red;" />
+
+</VBox>
