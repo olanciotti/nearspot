@@ -94,8 +94,8 @@ git clone https://github.com/olanciotti/nearspot.git
 2. Ingresar a la carpeta:
 cd NearSpot
 
-3. Compilar
+3. Compilar:
 mvn clean compile
 
-4. Ejecutar la aplicación
+4. Ejecutar la aplicación:
 mvn javafx:run
