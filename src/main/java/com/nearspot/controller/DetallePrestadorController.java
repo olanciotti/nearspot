@@ -209,7 +209,10 @@ private void mostrarDatos() {
         } else {
 
             lblVerificado.setText(
-                    "No verificado"
+                    "✗ No verificado"
+            );
+            lblVerificado.setStyle(
+                    "-fx-text-fill: red;"
             );
         }
 

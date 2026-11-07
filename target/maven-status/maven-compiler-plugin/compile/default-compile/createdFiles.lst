@@ -1,11 +1,7 @@
 com/nearspot/exception/LoginException.class
-com/nearspot/repository/PrestadorRepository.class
-com/nearspot/TestDatabase.class
 com/nearspot/dao/RolDAO.class
-com/nearspot/TestPrestadorDAO.class
 com/nearspot/dao/UsuarioDAO.class
 com/nearspot/dao/CalificacionesDAO.class
-com/nearspot/repository/InMemoryPrestadorRepository.class
 com/nearspot/model/Emprendimiento.class
 com/nearspot/model/Prestacion.class
 com/nearspot/model/Usuario.class
@@ -20,14 +16,10 @@ com/nearspot/config/DatabaseConnection.class
 com/nearspot/dao/ResenaDAO.class
 com/nearspot/controller/DetallePrestadorController.class
 com/nearspot/model/Rubro.class
-com/nearspot/data/DatosPrueba.class
 com/nearspot/controller/BuscarPrestadorController.class
-com/nearspot/TestUsuarioDAO.class
 com/nearspot/session/Sesion.class
-com/nearspot/TestNearSpot.class
 com/nearspot/model/Rol.class
 com/nearspot/service/LoginService.class
-com/nearspot/TestResenasCalificacionesDAO.class
 com/nearspot/model/PrestadorServicio.class
 com/nearspot/Main.class
 com/nearspot/controller/InicioController$1.class

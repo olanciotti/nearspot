@@ -1,6 +1,5 @@
 package com.nearspot.controller;
 
-import com.nearspot.data.DatosPrueba;
 import com.nearspot.model.Calificacion;
 import com.nearspot.model.Prestador;
 import com.nearspot.service.PrestadorService;

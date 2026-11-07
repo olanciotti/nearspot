@@ -1,9 +1,4 @@
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/Main.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/TestDatabase.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/TestNearSpot.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/TestPrestadorDAO.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/TestResenasCalificacionesDAO.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/TestUsuarioDAO.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/config/DatabaseConnection.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/controller/AdministracionController.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/controller/BuscarPrestadorController.java
@@ -15,7 +10,6 @@
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/dao/ResenaDAO.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/dao/RolDAO.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/dao/UsuarioDAO.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/data/DatosPrueba.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/exception/LoginException.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/model/Calificacion.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/model/Comercio.java
@@ -29,8 +23,6 @@
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/model/Ubicacion.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/model/Usuario.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/model/Zona.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/repository/InMemoryPrestadorRepository.java
-/Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/repository/PrestadorRepository.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/service/LoginService.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/service/PrestadorService.java
 /Users/ornella/Desktop/Personal/Siglo 21/Seminario/NearSpot/nearspot/src/main/java/com/nearspot/session/Sesion.java
