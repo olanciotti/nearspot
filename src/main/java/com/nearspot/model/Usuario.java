@@ -8,7 +8,7 @@ public class Usuario {
     private String email;
     private String password;
     private String estado;
-    private int rolId;
+    private  Rol rol;
 
     public Usuario(
             int id,
@@ -17,7 +17,7 @@ public class Usuario {
             String email,
             String password,
             String estado,
-            int rolId) {
+            Rol rol) {
 
         this.id = id;
         this.nombre = nombre;
@@ -25,7 +25,7 @@ public class Usuario {
         this.email = email;
         this.password = password;
         this.estado = estado;
-        this.rolId = rolId;
+        this.rol = rol;
     }
 
     public int getId() {
@@ -77,11 +77,11 @@ public class Usuario {
         this.estado = estado;
     }
 
-    public int getRolId() {
-        return rolId;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRolId(int rolId) {
-        this.rolId = rolId;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }

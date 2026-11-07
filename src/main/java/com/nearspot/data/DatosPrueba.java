@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatosPrueba {
-
+/* 
     public static List<Usuario> crearUsuarios() {
 
     List<Usuario> usuarios = new ArrayList<>();
@@ -20,7 +20,7 @@ public class DatosPrueba {
 
     Rol usuarioPrestador =
             new Rol(3, "USUARIO_PRESTADOR");
-
+ 
     Usuario admin = new Usuario(
             1,
             "Ornella",
@@ -28,7 +28,7 @@ public class DatosPrueba {
             "admin@nearspot.com",
             "admin123",
             "ACTIVO",
-            1
+            administrador
     );
 
     Usuario sofia = new Usuario(
@@ -51,13 +51,16 @@ public class DatosPrueba {
             3
     );
 
-    usuarios.add(admin);
     usuarios.add(sofia);
     usuarios.add(juan);
 
-    return usuarios;
-}
 
+    usuarios.add(admin);
+    return usuarios;
+
+    }
+*/
+/* */
     public static List<Prestador> crearPrestadores() {
 
         List<Prestador> prestadores = new ArrayList<>();
@@ -167,7 +170,7 @@ public class DatosPrueba {
         "MAT-12345"
 );
 
-
+/* 
 Usuario sofia = new Usuario(
         10,
         "Sofía",
@@ -226,7 +229,7 @@ prestadorServicio_1.agregarCalificacion(calificacion2);
 prestadorServicio_1.agregarResena(resena1);
 prestadorServicio_1.agregarResena(resena2);
 
-
+*/
 Emprendimiento emprendimiento_1 = new Emprendimiento(
         2,
         "Dulce Carolina",

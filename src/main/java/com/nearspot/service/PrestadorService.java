@@ -1,38 +1,38 @@
 package com.nearspot.service;
 
+import com.nearspot.dao.PrestadorDAO;
 import com.nearspot.model.Prestador;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PrestadorService {
 
-    /*private final PrestadorRepository repository;
+       private final PrestadorDAO prestadorDAO;
 
-    public PrestadorService(
-            PrestadorRepository repository) {
+    public PrestadorService() {
 
-        this.repository = repository;
+        this.prestadorDAO =
+                new PrestadorDAO();
     }
+
 
     public List<Prestador> listarTodos() {
 
-        return repository.listarTodos();
+        try {
+
+            return prestadorDAO.listarTodos();
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException(
+                "No se pudieron obtener los prestadores.",
+                e
+            );
+        }
     }
 
-    public List<Prestador> buscar(
-            String criterio) {
-
-        if (criterio == null ||
-            criterio.isBlank()) {
-
-            return repository.listarTodos();
-        }
-
-        return repository.buscarPorNombre(
-                criterio.trim()
-        );
-    }*/
    /*
      * BÚSQUEDA LINEAL
      *

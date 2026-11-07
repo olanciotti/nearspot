@@ -30,4 +30,6 @@ public class Prestacion {
     public boolean isEstaCalificada() {
         return estaCalificada;
     }
+
+    
 }

@@ -16,6 +16,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import com.nearspot.dao.ResenaDAO;
+import com.nearspot.dao.CalificacionesDAO;
+import com.nearspot.model.Resena;
+import com.nearspot.model.Calificacion;
+import java.sql.SQLException;
+import java.util.List;
 
 public class DetallePrestadorController {
 
@@ -81,16 +87,75 @@ public class DetallePrestadorController {
 
     private Prestador prestador;
 
+    private final ResenaDAO resenaDAO =
+        new ResenaDAO();
 
+   private final CalificacionesDAO calificacionDAO =
+                new CalificacionesDAO();
+
+
+                /* 
     public void setPrestador(Prestador prestador) {
 
         this.prestador = prestador;
 
         mostrarDatos();
+    }*/
+
+    public void setPrestador(Prestador prestador) {
+
+    this.prestador = prestador;
+
+    try {
+
+        cargarResenasYCalificaciones();
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+
+        System.out.println(
+                "Error cargando reseñas y calificaciones: "
+                + e.getMessage()
+        );
     }
 
+    mostrarDatos();
+}
 
-    private void mostrarDatos() {
+    
+private void cargarResenasYCalificaciones()
+        throws SQLException {
+
+    System.out.println(
+            "Cargando datos del prestador ID: "
+            + prestador.getId()
+    );
+
+    List<Resena> resenas =
+            resenaDAO.listarPorPrestador(
+                    prestador.getId()
+            );
+
+    List<Calificacion> calificaciones =
+            calificacionDAO.listarPorPrestador(
+                    prestador.getId()
+            );
+
+    System.out.println(
+            "Reseñas encontradas: "
+            + resenas.size()
+    );
+
+    System.out.println(
+            "Calificaciones encontradas: "
+            + calificaciones.size()
+    );
+
+    prestador.setResenas(resenas);
+    prestador.setCalificaciones(calificaciones);
+}    
+private void mostrarDatos() {
 
         if (prestador == null) {
             return;
@@ -272,6 +337,8 @@ public class DetallePrestadorController {
                 .add(sinResenas);
     }
 }
+
+
 
 private String generarEstrellas(int valor) {
 

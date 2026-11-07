@@ -1,6 +1,7 @@
 package com.nearspot.controller;
 
 import com.nearspot.data.DatosPrueba;
+import com.nearspot.model.Calificacion;
 import com.nearspot.model.Prestador;
 import com.nearspot.service.PrestadorService;
 
@@ -8,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -15,8 +17,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
+import com.nearspot.dao.CalificacionesDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,12 +42,38 @@ public class InicioController {
 
         private final PrestadorService prestadorService =
                 new PrestadorService();
+    
+    @FXML
+        private final CalificacionesDAO calificacionesDAO =
+        new CalificacionesDAO();
 
     @FXML
     public void initialize() {
 
-        // Cargar datos de prueba
-        prestadores = DatosPrueba.crearPrestadores();
+          try {
+
+        // 1. Cargar prestadores desde Oracle
+        prestadores =
+                prestadorService.listarTodos();
+
+        // 2. Cargar las calificaciones de cada prestador
+        cargarCalificaciones();
+
+        listaPrestadores.setItems(
+                FXCollections.observableArrayList(
+                        prestadores
+                )
+        );
+
+    } catch (RuntimeException e) {
+
+        mostrarError(
+                "No fue posible cargar los prestadores."
+        );
+
+        e.printStackTrace();
+        }
+        
 
         // Mostrar todos inicialmente
         listaPrestadores.setItems(
@@ -102,6 +132,8 @@ public class InicioController {
                     return;
                 }
 
+                System.out.println("=== PRESTADORES DISPONIBLES ===");
+
                 // =========================
                 // NOMBRE
                 // =========================
@@ -154,13 +186,13 @@ public class InicioController {
                 // CALIFICACIÓN
                 // =========================
 
+
                 double promedio =
-                        prestador
-                                .getPromedioCalificacion();
+                        prestador.getPromedioCalificacion();
 
                 Label lblCalificacion =
                         new Label(
-                                generarEstrellas(
+                                InicioController.this.generarEstrellas(
                                         (int) Math.round(promedio)
                                 )
                                 + "  "
@@ -171,11 +203,10 @@ public class InicioController {
                         );
 
                 lblCalificacion.setStyle(
-                       "-fx-font-size: 16px;" +
+                        "-fx-font-size: 16px;" +
                         "-fx-text-fill: #D4AF37;" +
                         "-fx-font-weight: bold;"
                 );
-
 
                 // =========================
                 // TIPO / RUBRO
@@ -296,78 +327,7 @@ private void buscar() {
             )
     );
 }
-/*
-    @FXML
-    private void buscar() {
 
-        String rubroSeleccionado =
-                cmbBusqueda.getValue();
-
-        String ubicacionBuscada =
-                txtUbicacion.getText()
-                        .toLowerCase()
-                        .trim();
-
-        List<Prestador> resultados =
-                prestadores.stream()
-
-                        // FILTRO POR RUBRO
-                        .filter(prestador -> {
-
-                            if (rubroSeleccionado == null ||
-                                rubroSeleccionado.equals("Todos")) {
-
-                                return true;
-                            }
-
-                            return prestador
-                                    .getRubro()
-                                    .getNombre()
-                                    .equalsIgnoreCase(
-                                            rubroSeleccionado
-                                    );
-                        })
-
-                        // FILTRO POR UBICACIÓN
-                        .filter(prestador -> {
-
-                            if (ubicacionBuscada.isEmpty()) {
-                                return true;
-                            }
-
-                            return prestador
-                                    .getUbicacion()
-                                    .getLocalidad()
-                                    .toLowerCase()
-                                    .contains(ubicacionBuscada)
-
-                                    ||
-
-                                    prestador
-                                            .getUbicacion()
-                                            .getProvincia()
-                                            .toLowerCase()
-                                            .contains(ubicacionBuscada)
-
-                                    ||
-
-                                    prestador
-                                            .getUbicacion()
-                                            .getZona()
-                                            .getNombre()
-                                            .toLowerCase()
-                                            .contains(ubicacionBuscada);
-                        })
-
-                        .collect(Collectors.toList());
-
-        // Mostrar resultados
-        listaPrestadores.setItems(
-                FXCollections.observableArrayList(resultados)
-        ); 
-               
-    }
- */
     private void abrirDetalle(Prestador prestador) {
 
     try {
@@ -418,6 +378,58 @@ private void buscar() {
 
     
 }
+
+private void cargarCalificaciones() {
+
+    for (Prestador prestador : prestadores) {
+
+        try {
+
+            List<Calificacion> calificaciones =
+                    calificacionesDAO.listarPorPrestador(
+                            prestador.getId()
+                    );
+
+            prestador.setCalificaciones(
+                    calificaciones
+            );
+
+            System.out.println(
+                    prestador.getNombre()
+                    + " - calificaciones: "
+                    + calificaciones.size()
+            );
+
+        } catch (SQLException e) {
+
+            System.err.println(
+                    "Error cargando calificaciones de "
+                    + prestador.getNombre()
+            );
+
+            e.printStackTrace();
+        }
+    }
+}
+
+private void mostrarError(String mensaje) {
+
+    Alert alert =
+            new Alert(
+                    Alert.AlertType.ERROR
+            );
+
+    alert.setTitle("NearSpot");
+
+    alert.setHeaderText(
+            "Error al acceder a los datos"
+    );
+
+    alert.setContentText(mensaje);
+
+    alert.showAndWait();
+}
+
 private String generarEstrellas(int valor) {
 
     StringBuilder estrellas =

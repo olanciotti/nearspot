@@ -1,7 +1,9 @@
 package com.nearspot.controller;
 
-import com.nearspot.data.DatosPrueba;
+import com.nearspot.exception.LoginException;
 import com.nearspot.model.Usuario;
+import com.nearspot.service.LoginService;
+import com.nearspot.session.Sesion;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class LoginController {
 
@@ -25,66 +26,44 @@ public class LoginController {
     @FXML
     private Label lblError;
 
+    private final LoginService loginService =
+            new LoginService();
+
+
     @FXML
     private void iniciarSesion() {
 
-        String email =
-                txtEmail.getText().trim();
+        try {
 
-        String password =
-                txtPassword.getText();
+            Usuario usuario =
+                    loginService.autenticar(
+                            txtEmail.getText(),
+                            txtPassword.getText()
+                    );
 
-        if (email.isEmpty() || password.isEmpty()) {
+            // Guardamos el usuario logueado
+            Sesion.iniciar(usuario);
 
-            lblError.setText(
-                    "Debe completar email y contraseña."
+            System.out.println(
+                    "Login correcto: "
+                    + usuario.getNombre()
             );
 
-            return;
-        }
-
-        List<Usuario> usuarios =
-                DatosPrueba.crearUsuarios();
-
-        Usuario usuarioEncontrado =
-                usuarios.stream()
-                        .filter(usuario ->
-                                usuario.getEmail()
-                                        .equalsIgnoreCase(email)
-                        )
-                        .filter(usuario ->
-                                usuario.getPassword()
-                                        .equals(password)
-                        )
-                        .filter(usuario ->
-                                usuario.getEstado()
-                                        .equalsIgnoreCase("ACTIVO")
-                        )
-                        .findFirst()
-                        .orElse(null);
-
-        if (usuarioEncontrado == null) {
-
-            lblError.setText(
-                    "Email o contraseña incorrectos."
+            System.out.println(
+                    "Rol: "
+                    + usuario.getRol().getNombre()
             );
 
-            return;
+            abrirInicio();
+
+        } catch (LoginException e) {
+
+            lblError.setText(
+                    e.getMessage()
+            );
         }
-
-        System.out.println(
-                "Login correcto: "
-                + usuarioEncontrado.getNombre()
-        );
-
-        System.out.println(
-                "Rol: "
-                + usuarioEncontrado
-                    .getRolId()
-        );
-
-        abrirInicio();
     }
+
 
     private void abrirInicio() {
 
@@ -92,14 +71,15 @@ public class LoginController {
 
             FXMLLoader loader =
                     new FXMLLoader(
-                            getClass()
-                                    .getResource(
-                                            "/views/inicio.fxml"
-                                    )
+                            getClass().getResource(
+                                    "/views/inicio.fxml"
+                            )
                     );
 
             Scene scene =
-                    new Scene(loader.load());
+                    new Scene(
+                            loader.load()
+                    );
 
             Stage stage =
                     (Stage) txtEmail

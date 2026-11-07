@@ -178,6 +178,16 @@ public abstract class Prestador {
         this.ubicacion = ubicacion;
     }
 
+    public void setResenas(List<Resena> resenas) {
+        this.resenas = resenas;
+    }
+
+    public void setCalificaciones(
+            List<Calificacion> calificaciones) {
+
+        this.calificaciones = calificaciones;
+    }
+
     // Agregar reseña y calificación
     public void agregarResena(Resena resena) {
     resenas.add(resena);
@@ -189,11 +199,14 @@ public abstract class Prestador {
 
     public double getPromedioCalificacion() {
 
-    if (calificaciones.isEmpty()) {
+      if (calificaciones == null ||
+        calificaciones.isEmpty()) {
+
         return 0;
     }
 
-    return calificaciones.stream()
+    return calificaciones
+            .stream()
             .mapToInt(Calificacion::getValor)
             .average()
             .orElse(0);
