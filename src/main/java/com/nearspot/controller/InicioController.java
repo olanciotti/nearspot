@@ -3,6 +3,7 @@ package com.nearspot.controller;
 import com.nearspot.model.Calificacion;
 import com.nearspot.model.Prestador;
 import com.nearspot.service.PrestadorService;
+import com.nearspot.session.Sesion;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -22,6 +23,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Separator;
 
 public class InicioController {
 
@@ -45,9 +48,25 @@ public class InicioController {
     @FXML
         private final CalificacionesDAO calificacionesDAO =
         new CalificacionesDAO();
+    @FXML
+        private VBox opcionesMenu;
 
     @FXML
+        private VBox menuLateral;     
+    @FXML
+    private Label lblLogo;
+ 
+
+    @FXML
+        private Separator separadorMenu;        
+    
+    @FXML
     public void initialize() {
+
+        opcionesMenu.setVisible(false);
+        opcionesMenu.setManaged(false);
+
+        menuLateral.setPrefWidth(90);
 
           try {
 
@@ -444,5 +463,126 @@ private String generarEstrellas(int valor) {
     }
 
     return estrellas.toString();
+}
+
+
+        @FXML
+        private void toggleMenu() {
+
+        boolean menuAbierto =
+                opcionesMenu.isVisible();
+
+        if (menuAbierto) {
+
+                // CONTRAER
+                opcionesMenu.setVisible(false);
+                opcionesMenu.setManaged(false);
+
+                lblLogo.setVisible(false);
+                lblLogo.setManaged(false);
+
+                separadorMenu.setVisible(false);
+                separadorMenu.setManaged(false);
+
+                menuLateral.setPrefWidth(70);
+
+        } else {
+
+                // EXPANDIR
+                opcionesMenu.setVisible(true);
+                opcionesMenu.setManaged(true);
+
+                lblLogo.setVisible(true);
+                lblLogo.setManaged(true);
+
+                separadorMenu.setVisible(true);
+                separadorMenu.setManaged(true);
+
+                menuLateral.setPrefWidth(200);
+        }
+        }
+
+        @FXML
+private void cerrarSesion() {
+
+    Sesion.cerrar();
+
+    try {
+
+        FXMLLoader loader =
+                new FXMLLoader(
+                        getClass().getResource(
+                                "/views/login.fxml"
+                        )
+                );
+
+        Scene scene =
+                new Scene(loader.load());
+
+        Stage stage =
+                (Stage) listaPrestadores
+                        .getScene()
+                        .getWindow();
+
+        stage.setScene(scene);
+
+        stage.setTitle(
+                "NearSpot - Login"
+        );
+
+        stage.setWidth(600);
+        stage.setHeight(500);
+
+        stage.centerOnScreen();
+
+    } catch (IOException e) {
+
+        e.printStackTrace();
+
+        mostrarError(
+                "No se pudo cerrar la sesión."
+        );
+    }
+}
+
+@FXML
+private void verPerfil() {
+
+    try {
+
+        FXMLLoader loader =
+                new FXMLLoader(
+                        getClass().getResource(
+                                "/views/perfil.fxml"
+                        )
+                );
+
+        Scene scene =
+                new Scene(loader.load());
+
+        Stage stage =
+                (Stage) listaPrestadores
+                        .getScene()
+                        .getWindow();
+
+        stage.setScene(scene);
+
+        stage.setTitle(
+                "NearSpot - Mi perfil"
+        );
+
+        stage.setWidth(700);
+        stage.setHeight(600);
+
+        stage.centerOnScreen();
+
+    } catch (IOException e) {
+
+        e.printStackTrace();
+
+        mostrarError(
+                "No se pudo abrir el perfil."
+        );
+    }
 }
 }

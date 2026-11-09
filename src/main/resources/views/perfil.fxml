@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.nearspot.controller.PerfilController"
+        spacing="15"
+        style="-fx-padding: 30;">
+
+    <Label
+            text="Mi perfil"
+            style="
+                -fx-font-size: 28px;
+                -fx-font-weight: bold;
+            "/>
+
+    <Separator/>
+
+    <Label text="Nombre"/>
+    <Label
+            fx:id="lblNombre"
+            style="-fx-font-size: 16px;"/>
+
+    <Label text="Apellido"/>
+    <Label
+            fx:id="lblApellido"
+            style="-fx-font-size: 16px;"/>
+
+    <Label text="Email"/>
+    <Label
+            fx:id="lblEmail"
+            style="-fx-font-size: 16px;"/>
+
+    <Label text="Estado"/>
+    <Label
+            fx:id="lblEstado"
+            style="-fx-font-size: 16px;"/>
+
+    <Label text="Rol"/>
+    <Label
+            fx:id="lblRol"
+            style="-fx-font-size: 16px;"/>
+
+    <Button
+            text="Volver"
+            onAction="#volver"/>
+
+</VBox>

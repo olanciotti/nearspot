@@ -27,3 +27,4 @@ com/nearspot/model/Prestador.class
 com/nearspot/model/Ubicacion.class
 com/nearspot/model/Resena.class
 com/nearspot/model/Comercio.class
+com/nearspot/controller/PerfilController.class
