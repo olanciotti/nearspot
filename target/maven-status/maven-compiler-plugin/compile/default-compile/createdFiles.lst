@@ -25,6 +25,7 @@ com/nearspot/Main.class
 com/nearspot/controller/InicioController$1.class
 com/nearspot/model/Prestador.class
 com/nearspot/model/Ubicacion.class
+com/nearspot/util/ArchivoService.class
 com/nearspot/model/Resena.class
 com/nearspot/model/Comercio.class
 com/nearspot/controller/PerfilController.class

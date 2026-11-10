@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
-import javafx.scene.layout.VBox;
+import com.nearspot.util.ArchivoService;
 import javafx.scene.control.Separator;
 
 public class InicioController {
@@ -298,6 +298,11 @@ private void buscar() {
 
     String ubicacionBuscada =
             txtUbicacion.getText();
+
+    archivoService.guardarBusqueda(
+        rubroSeleccionado,
+        ubicacionBuscada
+);
 
     // ==============================
     // BÚSQUEDA LINEAL
@@ -585,4 +590,7 @@ private void verPerfil() {
         );
     }
 }
+
+private final ArchivoService archivoService =
+        new ArchivoService();
 }

@@ -95,7 +95,7 @@
 
            <Button
                     text="Prestadores"
-                    maxWidth="Infinity"
+                    maxWidth="Infinity"/>
 
             <Button
                     text="Cerrar sesión"
